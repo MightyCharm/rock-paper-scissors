@@ -1,5 +1,8 @@
-
-
+let roundsPlayed = 0;
+let playerWon = false;
+let playAgain = false;
+let playerScore = 0;
+let computerScore = 0;
 
 // function will return choice of computer
 function getComputerChoice() {
@@ -19,7 +22,6 @@ function getComputerChoice() {
     }
     return computerChoice;
 }
-
 
 // function will play a round and return result
 function playRound(player, computer) {
@@ -72,17 +74,12 @@ function playRound(player, computer) {
             return "It's a tie. Both have chosen Scissors.";
         }
     } 
+    // Player input wrong
     else {
         playAgain = true;
         console.log("Wrong Input. Please enter: Rock, Paper or Scissors.")
     }
 }
-
-let roundsPlayed = 0;
-let playerWon = false;
-let playAgain = false;
-let playerScore = 0;
-let computerScore = 0;
 
 function game() {
     // main loop, will run as long as five rounds are played
@@ -91,15 +88,14 @@ function game() {
         let computerSelection = getComputerChoice();
 
         // 2. Player makes choice
-        //let playerSelection = prompt("Enter Rock, Paper or Scissors").toLowerCase()
-        let playerSelection = "rock";
+        let playerSelection = prompt("Enter Rock, Paper or Scissors").toLowerCase()
+        //let playerSelection = "paper";
 
         // 3. Round is played and result returned
         let resultGame = playRound(playerSelection, computerSelection);
         console.log(resultGame);
        
-
-        //  Check if player or computer has won the last round
+        // 4. Check who has won the last round
         //console.log("playAgain: " + playAgain);
         if(playAgain === false) {
             roundsPlayed += 1;
@@ -111,7 +107,7 @@ function game() {
             }
         }
        
-        // Check if 5 Rounds were played
+        // 5. Check if 5 Rounds were played
         if(roundsPlayed === 5) {
             console.log(`Rounds played: ${roundsPlayed}.`);
             console.log(`playerScore: ${playerScore}  ||  computerScore: ${computerScore}`);
@@ -121,10 +117,11 @@ function game() {
             } else {
                 console.log("Computer Wins the Game. You lose!");
             }
+            console.log("========================================================");
             break;
         };
         console.log(`playerScore: ${playerScore}  ||  computerScore: ${computerScore}`);
-        console.log(`Rounds played ${roundsPlayed}. NEXT ROUND STARTS NOW...`);
+        console.log(`Rounds played ${roundsPlayed}.`);
         console.log("========================================================");
     }
 
