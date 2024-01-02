@@ -1,23 +1,56 @@
 html {
-    background-color: dodgerblue;
+    background-color: rgb(22, 134, 246);
     height: 100vw;
 }
 
+.container {
+    border: 1px solid black;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+}
 
 .box-btn {
-    height: 100vw;
+    height: 100%;
     border: 1px solid red;
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
-    
 }
 
 .btn {
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
-    height: 200px;
-    flex-grow: 1;
+    height: 60%;
+    min-width: 250px;
+}
+
+.btn-rock {
+    background-image: url("img/rock.jpg");
+    background-size: cover;
+}
+
+.btn-paper {
+    background-image: url("img/paper.jpg");
+    background-size: cover;
+}
+
+.btn-scissors {
+    background-image: url("img/scissors.jpg");
+    background-size: cover;
+}
+
+.divText {
+    font-size: 30px;
+}
+
+img {
+    height: 100%;
+    width: 100%;
 }
 
 

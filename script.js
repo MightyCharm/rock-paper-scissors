@@ -76,7 +76,8 @@ function playRound(player, computer) {
 
 function game(player) {
     // main loop, will run as long as five rounds are played
-    while(true) {
+    
+    if(roundsPlayed < 5) {
         // 1. Computer makes choice
         let computerSelection = getComputerChoice();
 
@@ -88,8 +89,9 @@ function game(player) {
         // 3. Round is played and result returned
         let resultGame = playRound(playerSelection, computerSelection);
         console.log("----------")
-        console.log("play Again: " + resultGame[0] + " || player won: " + resultGame[1]);
+        console.log(`play Again: ${resultGame[0]}  || player won: ${resultGame[1]}`);
         console.log("----------")
+
         // 4. Check who has won the last round
         // resultGame[0] => playAgain ; resultGame[1] => playerWon
         if(resultGame[0] === false) {
@@ -101,47 +103,31 @@ function game(player) {
                 computerScore += 1;
             }
         }
-        
-       
-        // 5. Check if 5 Rounds were played
-        /*
-        if(roundsPlayed === 5) {
-            console.log(`Rounds played: ${roundsPlayed}.`);
-            console.log(`playerScore: ${playerScore}  ||  computerScore: ${computerScore}`);
-            // Check Who has Won the Game
-            if(playerScore > computerScore) {
-                console.log("Congratulation. You win the Game!");
-            } else {
-                console.log("Computer Wins the Game. You lose!");
-            }
-            console.log("========================================================");
-            break;
-        };
-        console.log(`playerScore: ${playerScore}  ||  computerScore: ${computerScore}`);
-        console.log(`Rounds played ${roundsPlayed}.`);
-        console.log("========================================================");
-        */
-        break;
+        console.log(`Rounds played: ${roundsPlayed} || Playerscore: ${playerScore} || Computerscore: ${computerScore}`);
     }
+
+
+    // check who has won
+    divResult.textContent = `Rounds played: ${roundsPlayed} || Playerscore: ${playerScore} || Computerscore: ${computerScore}`;
+    // print result
+    // ask for new game    
     
 }
 
 let roundsPlayed = 0;
 let playerScore = 0;
 let computerScore = 0;
-
-//const btnRock = document.querySelector(".btn-rock");
-//const btnPaper = document.querySelector(".btn-paper");
-//const btnScissors = document.querySelector(".btn-scissors");
-//console.log(btnScissors);
-
 const boxBtn = document.querySelector(".box-btn");
 //console.log(container)
-
+let divResult = document.querySelector("#result");
 // using bubbling to check which button was pressed
-boxBtn.addEventListener("click", (e) => {
-    game(e.target.value); // value (rock,paper, scissors) of clicked btn
-})
+//boxBtn.addEventListener("click", (e) => {
+//    game(e.target.value); // value (rock,paper, scissors) of clicked btn
+//})
 //game();
 
+function callGame(e) {
+    game(e.target.value);
+}
 //console.log("Thanks for playing. The Odin Project.")
+boxBtn.addEventListener("click", callGame);
