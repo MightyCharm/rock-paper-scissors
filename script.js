@@ -107,6 +107,7 @@ function game() {
         
        
         // 5. Check if 5 Rounds were played
+        /*
         if(roundsPlayed === 5) {
             console.log(`Rounds played: ${roundsPlayed}.`);
             console.log(`playerScore: ${playerScore}  ||  computerScore: ${computerScore}`);
@@ -122,6 +123,7 @@ function game() {
         console.log(`playerScore: ${playerScore}  ||  computerScore: ${computerScore}`);
         console.log(`Rounds played ${roundsPlayed}.`);
         console.log("========================================================");
+        */
     }
 
 }
