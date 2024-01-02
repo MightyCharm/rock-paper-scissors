@@ -1,6 +1,4 @@
 let roundsPlayed = 0;
-let playerWon = false;
-let playAgain = false;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -26,52 +24,49 @@ function getComputerChoice() {
 // function will play a round and return result
 function playRound(player, computer) {
     console.log("Player: " + player + "  ||  Computer: " + computer);
-    playerWon = false;
-    playAgain = false;
+    let playerWon = false;
+    let playAgain = false;
 
     // Player chooses rock
     if(player === "rock") {
-        if(computer === "rock") {
-            playAgain = true;
-            return "It's a tie. Both have chosen Rock.";
-        }
-        else if(computer === "paper") {
-            playerWon = false;
-            return "You lose! Paper beats Rock."
-        }
-        else if(computer === "scissors") {
-            playerWon = true;
-            return "You win! Rock beats Scissors.";
-        } 
+        switch(computer) {
+            case "rock":
+                playAgain = true;
+                break;
+            case "paper":
+                playerWon = false;
+                break;
+            case "scissors":
+                playerWon = true;
+                break;
+        };
     }
     // Player chooses paper
     else if(player === "paper") {
-        if(computer === "rock") {
-            playerWon = true;
-            return "You win! Paper beats Rock.";
-        }
-        else if(computer === "paper") {
-            playAgain = true;
-            return "It's a tie. Both have chosen Paper.";
-        }
-        else if(computer === "scissors") {
-            playerWon = false;
-            return "You lose! Scissors beats Paper.";
-        }       
+        switch(computer) {
+            case "rock":
+                playerWon = true;
+                break;
+            case "paper":
+                playAgain = true;
+                break;
+            case "scissors":
+                playerWon = false;
+                break;
+        };       
     }
     // Player chooses scissors
     else if(player === "scissors") {
-        if(computer === "rock") {
-            playerWon = false;
-            return "You lose! Scissors beats Rock";
-        }
-        else if(computer === "paper") {
-            playerWon = true;
-            return "You win! Scissors beats Paper";
-        }
-        else if(computer === "scissors") {
-            playAgain = true;
-            return "It's a tie. Both have chosen Scissors.";
+        switch(computer) {
+            case "rock":
+                playerWon = false;
+                break;
+            case "paper":
+                playerWon = true;
+                break;
+            case "scissors":
+                playAgain = true;
+                break;
         }
     } 
     // Player input wrong
@@ -79,6 +74,8 @@ function playRound(player, computer) {
         playAgain = true;
         console.log("Wrong Input. Please enter: Rock, Paper or Scissors.")
     }
+    // return result of game
+    return [playAgain, playerWon];
 }
 
 function game() {
@@ -93,19 +90,21 @@ function game() {
 
         // 3. Round is played and result returned
         let resultGame = playRound(playerSelection, computerSelection);
-        console.log(resultGame);
-       
+        console.log("----------")
+        console.log("play Again: " + resultGame[0] + " || player won: " + resultGame[1]);
+        console.log("----------")
         // 4. Check who has won the last round
-        //console.log("playAgain: " + playAgain);
-        if(playAgain === false) {
+        // resultGame[0] => playAgain ; resultGame[1] => playerWon
+        if(resultGame[0] === false) {
             roundsPlayed += 1;
-            if(playerWon === true) {
+            if(resultGame[1] === true) {
                 playerScore += 1;
             }
             else {
                 computerScore += 1;
             }
         }
+        
        
         // 5. Check if 5 Rounds were played
         if(roundsPlayed === 5) {
