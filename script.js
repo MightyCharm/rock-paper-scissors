@@ -1,7 +1,3 @@
-let roundsPlayed = 0;
-let playerScore = 0;
-let computerScore = 0;
-
 // function will return choice of computer
 function getComputerChoice() {
     let randomNum = Math.floor(Math.random() * 3);
@@ -78,14 +74,15 @@ function playRound(player, computer) {
     return [playAgain, playerWon];
 }
 
-function game() {
+function game(player) {
     // main loop, will run as long as five rounds are played
     while(true) {
         // 1. Computer makes choice
         let computerSelection = getComputerChoice();
 
         // 2. Player makes choice
-        let playerSelection = prompt("Enter Rock, Paper or Scissors").toLowerCase()
+        //let playerSelection = prompt("Enter Rock, Paper or Scissors").toLowerCase()
+        playerSelection = player;
         //let playerSelection = "paper";
 
         // 3. Round is played and result returned
@@ -124,10 +121,27 @@ function game() {
         console.log(`Rounds played ${roundsPlayed}.`);
         console.log("========================================================");
         */
+        break;
     }
-
+    
 }
 
-game();
+let roundsPlayed = 0;
+let playerScore = 0;
+let computerScore = 0;
 
-console.log("Thanks for playing. The Odin Project.")
+//const btnRock = document.querySelector(".btn-rock");
+//const btnPaper = document.querySelector(".btn-paper");
+//const btnScissors = document.querySelector(".btn-scissors");
+//console.log(btnScissors);
+
+const boxBtn = document.querySelector(".box-btn");
+//console.log(container)
+
+// using bubbling to check which button was pressed
+boxBtn.addEventListener("click", (e) => {
+    game(e.target.value); // value (rock,paper, scissors) of clicked btn
+})
+//game();
+
+//console.log("Thanks for playing. The Odin Project.")
