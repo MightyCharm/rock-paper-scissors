@@ -1,3 +1,5 @@
+console.log("start")
+
 // function will return choice of computer
 function getComputerChoice() {
     let randomNum = Math.floor(Math.random() * 3);
@@ -65,69 +67,76 @@ function playRound(player, computer) {
                 break;
         }
     } 
-    // Player input wrong
-    else {
-        playAgain = true;
-        console.log("Wrong Input. Please enter: Rock, Paper or Scissors.")
-    }
     // return result of game
     return [playAgain, playerWon];
 }
 
 function game(player) {
-    // main loop, will run as long as five rounds are played
     
-    if(roundsPlayed < 5) {
-        // 1. Computer makes choice
+    
+    if(roundsPlayed < 5) { 
+        playerSelection = player
         let computerSelection = getComputerChoice();
 
-        // 2. Player makes choice
-        //let playerSelection = prompt("Enter Rock, Paper or Scissors").toLowerCase()
-        playerSelection = player;
-        //let playerSelection = "paper";
+        // show on ui what player and computer choses
+         divTextSelection.textContent = `Player => "${playerSelection}" Computer => "${computerSelection}".`
 
-        // 3. Round is played and result returned
+        // round is played and result returned
         let resultGame = playRound(playerSelection, computerSelection);
-        console.log("----------")
-        console.log(`play Again: ${resultGame[0]}  || player won: ${resultGame[1]}`);
-        console.log("----------")
-
-        // 4. Check who has won the last round
-        // resultGame[0] => playAgain ; resultGame[1] => playerWon
-        if(resultGame[0] === false) {
+        let playAgain = resultGame[0]; // if true, it was a tie
+        let playerWon = resultGame[1]; // it true, player won the round
+        
+        //Check who has won the round
+        if(playAgain === false) { // it was no tie
             roundsPlayed += 1;
-            if(resultGame[1] === true) {
+            if(playerWon === true) {
                 playerScore += 1;
+                divTextGame.textContent = `Player won this round. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`
             }
-            else {
+            else { // computer won
                 computerScore += 1;
+                divTextGame.textContent = `Computer won this round. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`
             }
-        }
-        console.log(`Rounds played: ${roundsPlayed} || Playerscore: ${playerScore} || Computerscore: ${computerScore}`);
+        } 
+        // if it was a tie
+        else {
+            divTextGame.textContent = `It's a tie! Rounds played: ${roundsPlayed} || Playerscore: ${playerScore} || Computerscore: ${computerScore}`;
+        }       
+    } 
+    // 5 Rounds are played, Game Over
+    else {
+        // check who has won
+        if(playerScore > computerScore) {
+            divTextResult.textContent = `Congratulation. Player wins the Game ${playerScore} : ${computerScore}.`;
+        } 
+        else {
+            divTextResult.textContent = `Computer wins the game ${computerScore} : ${playerScore}.`
+        };    
     }
-
-
-    // check who has won
-    divResult.textContent = `Rounds played: ${roundsPlayed} || Playerscore: ${playerScore} || Computerscore: ${computerScore}`;
-    // print result
-    // ask for new game    
-    
 }
+
 
 let roundsPlayed = 0;
 let playerScore = 0;
 let computerScore = 0;
 const boxBtn = document.querySelector(".box-btn");
-//console.log(container)
-let divResult = document.querySelector("#result");
+let divTextSelection = document.querySelector("#divSelection");
+let divTextGame = document.querySelector("#divGame");
+let divTextResult = document.querySelector("#divResult");
+
+function callGame(e) {
+    // e.target.value = player rock/paper/scissors
+    game(e.target.value);
+}
+//console.log("Thanks for playing. The Odin Project.")
+boxBtn.addEventListener("click", callGame);
+
+
+
+
+
 // using bubbling to check which button was pressed
 //boxBtn.addEventListener("click", (e) => {
 //    game(e.target.value); // value (rock,paper, scissors) of clicked btn
 //})
 //game();
-
-function callGame(e) {
-    game(e.target.value);
-}
-//console.log("Thanks for playing. The Odin Project.")
-boxBtn.addEventListener("click", callGame);

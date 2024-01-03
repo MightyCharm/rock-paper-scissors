@@ -1,5 +1,5 @@
 html {
-    background-color: rgb(22, 134, 246);
+    background-color: rgb(33, 131, 230);
     height: 100vw;
 }
 
@@ -45,6 +45,18 @@ html {
 }
 
 .divText {
+    font-size: 30px;
+}
+
+.divTextSelection {
+    font-size: 30px;
+}
+
+.divTextGame {
+    font-size: 30px;
+}
+
+.divTextResult {
     font-size: 30px;
 }
 
