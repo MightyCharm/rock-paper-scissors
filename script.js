@@ -130,7 +130,7 @@ function playRound(player, computer) {
         };
     }
     // Player chooses paper
-    else if(player === "paper") {
+    else if(player === "PAPER") {
         switch(computer) {
             case "ROCK":
                 playerWon = true;
@@ -204,7 +204,7 @@ function game(player) {
     playerSelection = player
     // get and show computer selection
     let computerSelection = getComputerChoice();
-    
+    console.log("PLAYER: " + playerSelection + "  ||  " + "Computer: " + computerSelection);
     // create image for player and computer selection
     
     setImage(computerSelection)
@@ -231,6 +231,7 @@ let playerScore = 0;
 let computerScore = 0;
 // buttons
 const btnRock = document.querySelector("#btnRock");
+console.log(btnRock);
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissors = document.querySelector("#btnScissors");
 // text
@@ -246,6 +247,7 @@ btnAgain.disabled = true;
 
 function callGame(e) {
     // e.target.value = player rock/paper/scissors
+    console.log(e.target.value)
     game(e.target.value);
 };
 

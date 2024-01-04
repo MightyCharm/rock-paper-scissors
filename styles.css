@@ -81,6 +81,7 @@ html {
     align-items: center;
     width: 100vw;
     height: 90px;
+    gap: 50px;
     /*background-color: rgb(69, 174, 255);*/
 }
 
@@ -95,8 +96,6 @@ html {
     /*background-color: rgb(69, 174, 255);*/
 }
 
-
-
 .btn {
   /*width: 150px;*/
   /*height: 150px;*/
@@ -105,11 +104,11 @@ html {
 }
 
 .btn:hover {
-    box-shadow: 10px 10px 30px rgb(227, 227, 228);
+    box-shadow: 5px 5px 20px rgb(227, 227, 228);
 }
 
 .btnAgain:hover {
-    box-shadow: 10px 10px 30px rgb(227, 227, 228);
+    box-shadow: 5px 5px 20px rgb(227, 227, 228);
 }
 
 .btnRock {
@@ -153,19 +152,35 @@ html {
 }
 
 
-
 .playerScore {
+    /*border: 1px solid red;*/
     flex-basis: 200px;
 }
 
+.roundCount {
+    /*border: 1px solid yellow;*/
+}
+
 .computerScore {
+    /*border: 1px solid red;*/
     flex-basis: 250px;
 }
 
 .btnAgain {
+    /*border: 1px solid yellow;*/
     font-size: 20px;
     border-radius: 4px;
+    padding: 10px;
+    color: black;
+    /*background-color:rgb(30, 156, 224);*/
+    
 }
+
+.btnAgain:enabled {
+    background-color:rgb(30, 156, 224);
+}
+
+
 
 
 
