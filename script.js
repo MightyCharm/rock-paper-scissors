@@ -5,16 +5,20 @@ function playAgain() {
     playerScore = 0;
     computerScore = 0;
     // clear text
-    divTextSelection.textContent = "";
-    divTextGame.textContent = "";
-    divTextResult.textContent = "";
-    divTextGameOver.textContent = "";
+    playerScoreText.textContent = "Player: ";
+    computerScoreText.textContent = "Computer: ";
+    roundCountText.textContent = `Round: ${roundsPlayed}`; 
+    playerSelectionText.textContent = "Player: ";
+    computerSelectionText.textContent = "Computer: ";
+    resultRoundText.textContent = "";
+    gameOverText.textContent = "";
+
     // activate buttons
     btnRock.disabled = false;
     btnPaper.disabled = false;
     btnScissors.disabled = false;
     // deactivate button
-    btnPlayAgain.disabled = true;
+    btnAgain.disabled = true;
 
 }
 
@@ -102,42 +106,49 @@ function getResult(resultRound) {
             // check who won the round
             if(playerWon === true) {
                 playerScore += 1;
-                divTextGame.textContent = `Player won this round. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`;
+                resultRoundText.textContent = `PLAYER WINS THIS ROUND!`;
+                console.log(`Player won this round. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`);
             }
             else if(playerWon === false) {
                 computerScore += 1;
-                divTextGame.textContent = `Computer won this round. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`;
-            }    
+                resultRoundText.textContent = `COMPUTER WINS THIS ROUND!`;
+                console.log(`Computer won this round. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`);
+            }
+            roundCountText.textContent = `Round: ${roundsPlayed}`;    
         }
         // round was a tie
         else {
-            divTextGame.textContent = `It' a tie. Round must be played again. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`;  
+            resultRoundText.textContent = `TIE ! PLAY ROUND AGAIN.`;
+            console.log(`It' a tie. Round must be played again. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`);  
         }
    
 }
 
 function gameOver() {
     if(playerScore > computerScore) {
-        divTextGameOver.textContent = "CONGRATULATION YOU WON THE GAME!";
+        gameOverText.textContent = "CONGRATULATION! YOU WIN THIS MATCH!";
+        console.log("CONGRATULATION YOU WON THE GAME!");
     } else {
-        divTextGameOver.textContent = "YOU LOSE! COMPUTER WON THE GAME!";
+        gameOverText.textContent = "YOU LOSE! COMPUTER WINS THIS MATCH ";
+        console.log("YOU LOSE! COMPUTER WON THE GAME!");
     }
 }
 
 
 function game(player) {
+    // get and show player selection
     playerSelection = player
+    playerSelectionText.textContent = `Player: ${playerSelection}`;
+    // get and show computer selection
     let computerSelection = getComputerChoice();
-
+    computerSelectionText.textContent = `Computer: ${computerSelection}`;
+    
     // show on ui what player and computer choses
-    divTextSelection.textContent = `Player: "${playerSelection}" || Computer: "${computerSelection}".`
+    console.log(`Player: "${playerSelection}" || Computer: "${computerSelection}".`);
 
     // round is played and result returned
     let resultRound = playRound(playerSelection, computerSelection);
     getResult(resultRound);
-
-    // do something with checkResult
-    // check how many rounds are played
 
     // less than 5 => continue
     // 5 => announce winner
@@ -149,29 +160,30 @@ function game(player) {
         btnPaper.disabled = true;
         btnScissors.disabled = true;
         // activate button
-        btnPlayAgain.disabled = false;
-        // announce winner
-        // active button play new game
+        btnAgain.disabled = false;
 
-        // call function getResult
-        gameOver();
+        gameOver(); // shows winner
     }  
 }
 
-
+// variables
 let roundsPlayed = 0;
 let playerScore = 0;
 let computerScore = 0;
+// buttons
 const btnRock = document.querySelector("#btnRock");
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissors = document.querySelector("#btnScissors");
-let divTextSelection = document.querySelector("#divSelection");
-let divTextGame = document.querySelector("#divGame");
-let divTextResult = document.querySelector("#divResult");
-let divTextGameOver = document.querySelector("#divGameOver");
+// text
+const playerScoreText = document.querySelector("#playerScore");
+const computerScoreText = document.querySelector("#computerScore");
+const roundCountText = document.querySelector("#roundCount")
+const playerSelectionText = document.querySelector("#playerSelection");
+const computerSelectionText = document.querySelector("#computerSelection");
+const resultRoundText = document.querySelector("#resultRound");
+const gameOverText = document.querySelector("#gameOver");
 
-
-btnPlayAgain.disabled = true;
+btnAgain.disabled = true;
 
 function callGame(e) {
     // e.target.value = player rock/paper/scissors
@@ -181,4 +193,4 @@ function callGame(e) {
 btnRock.addEventListener("click", callGame);
 btnPaper.addEventListener("click", callGame);
 btnScissors.addEventListener("click", callGame);
-btnPlayAgain.addEventListener("click", playAgain);
+btnAgain.addEventListener("click", playAgain);

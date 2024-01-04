@@ -8,25 +8,32 @@
     </head>
     <body>
         <div class="container">
-            <div class="box-1">
+            <div class="flexbox-1">
                 <div>Rock Paper Scissors</div>
             </div>
             
-            <div class="box-2">
-                <button id="btnRock" class="btn btn-rock" value="ROCK"></button>
-                <button id="btnPaper" class="btn btn-paper" value="PAPER"></button>
-                <button id="btnScissors" class="btn btn-scissors" value="SCISSORS"></button>
+            <div class="flexbox-2">
+                <button id="btnRock" class="btn btnRock" value="ROCK"></button>
+                <button id="btnPaper" class="btn btnPaper" value="PAPER"></button>
+                <button id="btnScissors" class="btn btnScissors" value="SCISSORS"></button>
+                
             </div>
 
-            <div class="box-3">
-                <div id="divSelection" class="divSelection"></div>
-                <div id="divGame" class="divGame"></div>
-                <div id="divResult" class="divResult"></div>
-                <div id="divGameOver" class="divGameOver"></div>
+            <div class="flexbox-3">
+                <div id="playerScore" class="playerScore">Player: </div>
+                <div id="roundCount" class="roundCount">Round: 0</div>
+                <div id="computerScore" class="computerScore">Computer: </div>
+                <button id="btnAgain" class="btnAgain">PLAY AGAIN</button>
             </div>
             
-            <div class="box-4">
-                <button id="btnPlayAgain" class="btnAgain">PLAY AGAIN</button>
+            <div class="flexbox-4">
+                <div id="playerSelection" class="playerSelection">Player: </div>
+                <div id="resultRound" class="resultRound"></div>
+                <div id="computerSelection" class="computerSelection">Computer:</div>
+            </div>
+
+            <div class="flexbox-5">
+                <div id="gameOver" class="gameOver"></div>
             </div>
         </div>
 
