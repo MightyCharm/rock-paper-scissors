@@ -1,13 +1,12 @@
 
 function playAgain() {
+    //console.log("function playAgain()");
     // set back to initial state
     roundsPlayed = 0;
     playerScore = 0;
     computerScore = 0;
 
-    playerSelectionText.textContent = "Player:";
-    resultRoundText.textContent = "";
-    computerSelectionText.textContent = "Computer:";
+    resultRoundText.textContent = "";    
     playerScoreText.textContent = "Player: 0";
     roundCountText.textContent = `Round: ${roundsPlayed}`; 
     computerScoreText.textContent = "Computer: 0";
@@ -18,9 +17,16 @@ function playAgain() {
     btnScissors.disabled = false;
     // deactivate button
     btnAgain.disabled = true;
+
+    // Remove Images
+    let image = document.querySelector(".image");
+    playerSelectionImage.removeChild(image);
+    let image2 = document.querySelector(".image");
+    computerSelectionImage.removeChild(image2);
 }
 
 function getComputerChoice() {
+    //console.log("function getComputerChoice()");
     let randomNum = Math.floor(Math.random() * 3);
     let computerChoice;
     //console.log(randomNum);
@@ -38,7 +44,74 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+function setImage(computerSelection) {
+    //console.log("function setImage()");
+    let width = "150px";
+    let height = "150px"
+    
+    if (playerSelectionImage.childNodes.length >= 1) {
+        let image = document.querySelector(".image");
+        playerSelectionImage.removeChild(image);
+        
+    };
+
+    if(computerSelectionImage.childNodes.length >= 1) {
+        console.log(computerSelectionImage);
+        let image = document.querySelector(".image");
+        computerSelectionImage.removeChild(image);
+    }
+    
+
+    if(playerSelection === "ROCK") {       
+        const element = document.createElement('img');
+        element.setAttribute("src", "img/rock.jpg");
+        element.setAttribute("height", height);
+        element.setAttribute("width", width);
+        element.setAttribute("class", "image");
+        playerSelectionImage.appendChild(element);
+    } else if(playerSelection === "PAPER") {
+        const element = document.createElement('img');
+        element.setAttribute("src", "img/paper.jpg");
+        element.setAttribute("height", height);
+        element.setAttribute("width", width);
+        element.setAttribute("class", "image");
+        playerSelectionImage.appendChild(element);
+    } else {
+        const element = document.createElement('img');
+        element.setAttribute("src", "img/scissors.jpg");
+        element.setAttribute("height", height);
+        element.setAttribute("width", width);
+        element.setAttribute("class", "image");
+        playerSelectionImage.appendChild(element);
+    }
+
+    if(computerSelection === "ROCK") {
+        const element = document.createElement("img");
+        element.setAttribute("src", "img/rock.jpg");
+        element.setAttribute("height", height);
+        element.setAttribute("width", width);
+        element.setAttribute("class", "image");
+        computerSelectionImage.appendChild(element);
+    } else if(computerSelection === "PAPER") {
+        const element = document.createElement("img");
+        element.setAttribute("src", "img/paper.jpg");
+        element.setAttribute("height", height);
+        element.setAttribute("width", width);
+        element.setAttribute("class", "image");
+        computerSelectionImage.appendChild(element);
+    } else {
+        const element = document.createElement("img");
+        element.setAttribute("src", "img/scissors.jpg");
+        element.setAttribute("height", height)
+        element.setAttribute("width", width);
+        element.setAttribute("class", "image");
+        computerSelectionImage.appendChild(element);
+    }
+}
+
+
 function playRound(player, computer) {
+    //console.log("function playRound()");
     let playerWon = false;
     let playAgain = false;
 
@@ -89,6 +162,7 @@ function playRound(player, computer) {
 }
 
 function getResult(resultRound) {
+    //console.log("function getResult()");
         let playAgain = resultRound[0];
         let playerWon = resultRound[1];
     
@@ -115,6 +189,7 @@ function getResult(resultRound) {
 }
 
 function gameOver() {
+    //console.log("function gameOver()");
     if(playerScore > computerScore) {
         gameOverText.textContent = "CONGRATULATION! YOU WIN THIS MATCH!";
     } else {
@@ -123,13 +198,17 @@ function gameOver() {
 }
 
 function game(player) {
+    //console.log("function game()");
+   
     // get and show player selection
     playerSelection = player
-    playerSelectionText.textContent = `Player: ${playerSelection}`;
     // get and show computer selection
     let computerSelection = getComputerChoice();
-    computerSelectionText.textContent = `Computer: ${computerSelection}`;
     
+    // create image for player and computer selection
+    
+    setImage(computerSelection)
+
     // round is played and result returned
     let resultRound = playRound(playerSelection, computerSelection);
     getResult(resultRound);
@@ -155,9 +234,9 @@ const btnRock = document.querySelector("#btnRock");
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissors = document.querySelector("#btnScissors");
 // text
-const playerSelectionText = document.querySelector("#playerSelection");
+const playerSelectionImage = document.querySelector("#playerSelectionImage");
 const resultRoundText = document.querySelector("#resultRound");
-const computerSelectionText = document.querySelector("#computerSelection");
+const computerSelectionImage = document.querySelector("#computerSelectionImage");
 const playerScoreText = document.querySelector("#playerScore");
 const roundCountText = document.querySelector("#roundCount");
 const computerScoreText = document.querySelector("#computerScore");

@@ -1,6 +1,12 @@
 html {
     height: 100vw;
     width: 100vw;
+    
+}
+
+.body {
+    background-color:rgb(1, 1, 11);
+    color: white;
     font-family: "Lucida Console", "Courier New", monospace;
 }
 
@@ -8,57 +14,102 @@ html {
     display: flex;
     flex-direction: column;
     height: 100vw;
-    align-items: center;
-    gap: 10px;   
+    align-items: center;   
 }
 
 .flexbox-1 {
-    background-color: rgb(69, 174, 255);
-    font-size: 40px;  
-}
-
-.flexbox-2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    height: 20%;
+    background-color: rgb(3, 20, 33);
+    height: 100px;
     width: 100vw;
-    background-color: rgb(69, 174, 255);   
+    font-size: 45px;
+    margin-top: -10px; 
 }
 
+.flexbox-2 { 
+    /*border: 1px solid green;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    font-size: 25px;
+    padding: 10px;
+}
+
+/* buttons */
 .flexbox-3 {
-    font-size: 35px;
-    gap: 50px;
-    background-color: rgb(69, 174, 255);
+    /*border: 1px solid yellow;*/
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    height: 160px;;
+    width: 100vw;
+    padding-top: 5px;
+    /*background-color: rgb(69, 174, 255);*/   
 }
 
 .flexbox-4 {
-    font-size: 35px;
-    gap: 100px;
-    background-color: rgb(69, 174, 255);
-}
-
-.flexbox-5 {
-    font-size: 35px;
-    background-color: rgb(69, 174, 255);
-}
-
-.flexbox-1, .flexbox-3, .flexbox-4, .flexbox-5 {
+    /*border: 1px solid red;*/
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 160px;
     width: 100vw;
+    font-size: 35px;
+    gap: 50px;
+    
+    /*background-color: rgb(69, 174, 255);*/
 }
+
+.flexbox-5 {   
+    /*border: 1px solid red;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 90px;
+    font-size: 35px;
+}
+
+.flexbox-6 {
+    /*border: 1px solid yellow;*/
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 90px;
+    /*background-color: rgb(69, 174, 255);*/
+}
+
+.flexbox-7 {
+    /*border: 1px solid red;*/
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+    width: 100vw;
+    height: 90px;
+    /*background-color: rgb(69, 174, 255);*/
+}
+
+
 
 .btn {
-  width: 200px;
-  height: 200px;
+  /*width: 150px;*/
+  /*height: 150px;*/
+  height: 120px;
+  flex-basis: 120px;
 }
 
-.btn, .btnAgain:hover {
-    box-shadow: 10px 10px 40px rgb(227, 227, 228);
+.btn:hover {
+    box-shadow: 10px 10px 30px rgb(227, 227, 228);
+}
+
+.btnAgain:hover {
+    box-shadow: 10px 10px 30px rgb(227, 227, 228);
 }
 
 .btnRock {
@@ -77,16 +128,31 @@ html {
 }
 
 .playerSelection {
-    flex-basis: 360px;
+    /*border: 1px solid red;*/
 }
+
+.playerSelectionImage {
+    /*border: 1px solid yellow;*/
+    width: 150px;
+    height: 150px;
+}
+
+.computerSelectionImage {
+    /*border: 1px solid green;*/
+    width: 150px;
+    height: 150px;
+}
+
+.computerSelection {
+    /*border: 1px solid red;*/
+}
+
 
 .resultRound {
     flex-basis: 540px;
 }
 
-.computerSelection {
-    flex-basis: 380px;
-}
+
 
 .playerScore {
     flex-basis: 200px;

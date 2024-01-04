@@ -6,34 +6,43 @@
         <title>Game: Rock Paper Scissors</title>
         <link rel="stylesheet" href="styles.css">
     </head>
-    <body>
+    <body class="body">
         <div class="container">
             <div class="flexbox-1">
                 <div>Rock Paper Scissors</div>
             </div>
-            
+
             <div class="flexbox-2">
+                <div>CHOOSE ONE OPTION</div>
+            </div>
+            
+            <div class="flexbox-3">
                 <button id="btnRock" class="btn btnRock" value="ROCK"></button>
                 <button id="btnPaper" class="btn btnPaper" value="PAPER"></button>
                 <button id="btnScissors" class="btn btnScissors" value="SCISSORS"></button>
                 
             </div>
 
-            <div class="flexbox-3">
-                <div id="playerSelection" class="playerSelection">Player: </div>
-                <div id="resultRound" class="resultRound"></div>
-                <div id="computerSelection" class="computerSelection">Computer:</div>
+            <div class="flexbox-4">
+                <div class="playerSelection">Player</div>
+                <div id="playerSelectionImage" class="playerSelectionImage"></div>
+                <div id="computerSelectionImage" class="computerSelectionImage"></div>
+                <div class="computerSelection">Computer</div>
             </div>
 
-            <div class="flexbox-4">
+            <div class="flexbox-5">
+                <div id="resultRound" class="resultRound">COMPUTER WINS!</div>
+            </div>
+
+            <div class="flexbox-6">
                 <div id="playerScore" class="playerScore">Player: 0</div>
                 <div id="roundCount" class="roundCount">Round: 0</div>
                 <div id="computerScore" class="computerScore">Computer: 0</div>
                 <button id="btnAgain" class="btnAgain">PLAY AGAIN</button>
             </div>
 
-            <div class="flexbox-5">
-                <div id="gameOver" class="gameOver"></div>
+            <div class="flexbox-7">
+                <div id="gameOver" class="gameOver">COMPUTER WINS MATCH</div>
             </div>
         </div>
 
