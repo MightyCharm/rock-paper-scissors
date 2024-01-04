@@ -4,26 +4,22 @@ function playAgain() {
     roundsPlayed = 0;
     playerScore = 0;
     computerScore = 0;
-    // clear text
-    playerScoreText.textContent = "Player: ";
-    computerScoreText.textContent = "Computer: ";
-    roundCountText.textContent = `Round: ${roundsPlayed}`; 
-    playerSelectionText.textContent = "Player: ";
-    computerSelectionText.textContent = "Computer: ";
+
+    playerSelectionText.textContent = "Player:";
     resultRoundText.textContent = "";
+    computerSelectionText.textContent = "Computer:";
+    playerScoreText.textContent = "Player: 0";
+    roundCountText.textContent = `Round: ${roundsPlayed}`; 
+    computerScoreText.textContent = "Computer: 0";
     gameOverText.textContent = "";
 
-    // activate buttons
     btnRock.disabled = false;
     btnPaper.disabled = false;
     btnScissors.disabled = false;
     // deactivate button
     btnAgain.disabled = true;
-
 }
 
-
-// function will return choice of computer
 function getComputerChoice() {
     let randomNum = Math.floor(Math.random() * 3);
     let computerChoice;
@@ -42,9 +38,7 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-// function will play a round and return result
 function playRound(player, computer) {
-    console.log("Player: " + player + "  ||  Computer: " + computer);
     let playerWon = false;
     let playAgain = false;
 
@@ -94,11 +88,9 @@ function playRound(player, computer) {
     return [playAgain, playerWon];
 }
 
-
 function getResult(resultRound) {
         let playAgain = resultRound[0];
         let playerWon = resultRound[1];
-        console.log("playAgain: " + playAgain + "   playerWon: " + playerWon );
     
         // check if round was not a tie
         if(playAgain === false) {
@@ -106,34 +98,29 @@ function getResult(resultRound) {
             // check who won the round
             if(playerWon === true) {
                 playerScore += 1;
-                resultRoundText.textContent = `PLAYER WINS THIS ROUND!`;
-                console.log(`Player won this round. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`);
+                resultRoundText.textContent = `PLAYER WINS THIS ROUND!`;           
             }
             else if(playerWon === false) {
                 computerScore += 1;
                 resultRoundText.textContent = `COMPUTER WINS THIS ROUND!`;
-                console.log(`Computer won this round. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`);
             }
-            roundCountText.textContent = `Round: ${roundsPlayed}`;    
+            playerScoreText.textContent = `Player: ${playerScore}`;
+            roundCountText.textContent = `Round: ${roundsPlayed}`;
+            computerScoreText.textContent = `Computer: ${computerScore}`;   
         }
         // round was a tie
         else {
             resultRoundText.textContent = `TIE ! PLAY ROUND AGAIN.`;
-            console.log(`It' a tie. Round must be played again. Rounds played: ${roundsPlayed} || Player Score: ${playerScore} || Computerscore: ${computerScore}`);  
-        }
-   
+        }  
 }
 
 function gameOver() {
     if(playerScore > computerScore) {
         gameOverText.textContent = "CONGRATULATION! YOU WIN THIS MATCH!";
-        console.log("CONGRATULATION YOU WON THE GAME!");
     } else {
         gameOverText.textContent = "YOU LOSE! COMPUTER WINS THIS MATCH ";
-        console.log("YOU LOSE! COMPUTER WON THE GAME!");
     }
 }
-
 
 function game(player) {
     // get and show player selection
@@ -143,19 +130,12 @@ function game(player) {
     let computerSelection = getComputerChoice();
     computerSelectionText.textContent = `Computer: ${computerSelection}`;
     
-    // show on ui what player and computer choses
-    console.log(`Player: "${playerSelection}" || Computer: "${computerSelection}".`);
-
     // round is played and result returned
     let resultRound = playRound(playerSelection, computerSelection);
     getResult(resultRound);
 
-    // less than 5 => continue
-    // 5 => announce winner
+    // 5 rounds => announce winner
     if(roundsPlayed >= 5) {
-        console.log("5 rounds played GAME OVER");
-
-        // deactivate buttons
         btnRock.disabled = true;
         btnPaper.disabled = true;
         btnScissors.disabled = true;
@@ -175,12 +155,12 @@ const btnRock = document.querySelector("#btnRock");
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissors = document.querySelector("#btnScissors");
 // text
-const playerScoreText = document.querySelector("#playerScore");
-const computerScoreText = document.querySelector("#computerScore");
-const roundCountText = document.querySelector("#roundCount")
 const playerSelectionText = document.querySelector("#playerSelection");
-const computerSelectionText = document.querySelector("#computerSelection");
 const resultRoundText = document.querySelector("#resultRound");
+const computerSelectionText = document.querySelector("#computerSelection");
+const playerScoreText = document.querySelector("#playerScore");
+const roundCountText = document.querySelector("#roundCount");
+const computerScoreText = document.querySelector("#computerScore");
 const gameOverText = document.querySelector("#gameOver");
 
 btnAgain.disabled = true;
