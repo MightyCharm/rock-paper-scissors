@@ -135,7 +135,7 @@ function game(player) {
     getResult(resultRound);
 
     // 5 rounds => announce winner
-    if(roundsPlayed >= 5) {
+    if(playerScore >= 5 || computerScore >= 5) {
         btnRock.disabled = true;
         btnPaper.disabled = true;
         btnScissors.disabled = true;
