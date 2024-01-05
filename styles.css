@@ -1,7 +1,6 @@
 html {
     height: 100vw;
-    width: 100vw;
-    
+    width: 100vw;   
 }
 
 .body {
@@ -29,7 +28,6 @@ html {
 }
 
 .flexbox-2 { 
-    /*border: 1px solid green;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,14 +38,12 @@ html {
 
 /* buttons */
 .flexbox-3 {
-    /*border: 1px solid yellow;*/
     display: flex;
     justify-content: center;
     gap: 30px;
     height: 160px;;
     width: 100vw;
     padding-top: 5px;
-    /*background-color: rgb(69, 174, 255);*/   
 }
 
 .flexbox-4 {
@@ -59,12 +55,9 @@ html {
     width: 100vw;
     font-size: 35px;
     gap: 50px;
-    
-    /*background-color: rgb(69, 174, 255);*/
 }
 
 .flexbox-5 {   
-    /*border: 1px solid red;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,7 +67,6 @@ html {
 }
 
 .flexbox-6 {
-    /*border: 1px solid yellow;*/
     font-size: 35px;
     display: flex;
     justify-content: center;
@@ -82,23 +74,18 @@ html {
     width: 100vw;
     height: 90px;
     gap: 50px;
-    /*background-color: rgb(69, 174, 255);*/
 }
 
 .flexbox-7 {
-    /*border: 1px solid red;*/
     font-size: 35px;
     display: flex;
     justify-content: center;
     align-items: center;;
     width: 100vw;
     height: 90px;
-    /*background-color: rgb(69, 174, 255);*/
 }
 
 .btn {
-  /*width: 150px;*/
-  /*height: 150px;*/
   height: 120px;
   flex-basis: 120px;
 }
@@ -126,62 +113,36 @@ html {
     background-size: cover;
 }
 
-.playerSelection {
-    /*border: 1px solid red;*/
-}
-
 .playerSelectionImage {
-    /*border: 1px solid yellow;*/
     width: 150px;
     height: 150px;
 }
 
 .computerSelectionImage {
-    /*border: 1px solid green;*/
     width: 150px;
     height: 150px;
 }
 
-.computerSelection {
-    /*border: 1px solid red;*/
-}
-
-
 .resultRound {
-    flex-basis: 540px;
+    text-align: center;
+    flex-basis: 450px;
 }
-
 
 .playerScore {
-    /*border: 1px solid red;*/
     flex-basis: 200px;
 }
 
-.roundCount {
-    /*border: 1px solid yellow;*/
-}
-
 .computerScore {
-    /*border: 1px solid red;*/
     flex-basis: 250px;
 }
 
 .btnAgain {
-    /*border: 1px solid yellow;*/
     font-size: 20px;
     border-radius: 4px;
     padding: 10px;
     color: black;
-    /*background-color:rgb(30, 156, 224);*/
-    
 }
 
 .btnAgain:enabled {
     background-color:rgb(30, 156, 224);
 }
-
-
-
-
-
-

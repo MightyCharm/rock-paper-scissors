@@ -29,7 +29,6 @@ function getComputerChoice() {
     //console.log("function getComputerChoice()");
     let randomNum = Math.floor(Math.random() * 3);
     let computerChoice;
-    //console.log(randomNum);
     switch(randomNum) {
         case 0:
             computerChoice = "ROCK";
@@ -49,65 +48,50 @@ function setImage(computerSelection) {
     let width = "150px";
     let height = "150px"
     
+    // if image is already there, delete it 
     if (playerSelectionImage.childNodes.length >= 1) {
         let image = document.querySelector(".image");
         playerSelectionImage.removeChild(image);
         
     };
-
+    // if image is already there, delete it
     if(computerSelectionImage.childNodes.length >= 1) {
-        console.log(computerSelectionImage);
         let image = document.querySelector(".image");
         computerSelectionImage.removeChild(image);
     }
     
-
+    // create image for player selection
+    const element = document.createElement('img');
     if(playerSelection === "ROCK") {       
-        const element = document.createElement('img');
         element.setAttribute("src", "img/rock.jpg");
-        element.setAttribute("height", height);
-        element.setAttribute("width", width);
-        element.setAttribute("class", "image");
-        playerSelectionImage.appendChild(element);
-    } else if(playerSelection === "PAPER") {
-        const element = document.createElement('img');
+    } 
+    else if(playerSelection === "PAPER") {
         element.setAttribute("src", "img/paper.jpg");
-        element.setAttribute("height", height);
-        element.setAttribute("width", width);
-        element.setAttribute("class", "image");
-        playerSelectionImage.appendChild(element);
-    } else {
-        const element = document.createElement('img');
+    } 
+    else {
         element.setAttribute("src", "img/scissors.jpg");
-        element.setAttribute("height", height);
-        element.setAttribute("width", width);
-        element.setAttribute("class", "image");
-        playerSelectionImage.appendChild(element);
     }
+    element.setAttribute("height", height);
+    element.setAttribute("width", width);
+    element.setAttribute("class", "image");
+    playerSelectionImage.appendChild(element);
 
+    // create image for computer selection
+    const element2 = document.createElement('img');
     if(computerSelection === "ROCK") {
-        const element = document.createElement("img");
-        element.setAttribute("src", "img/rock.jpg");
-        element.setAttribute("height", height);
-        element.setAttribute("width", width);
-        element.setAttribute("class", "image");
-        computerSelectionImage.appendChild(element);
-    } else if(computerSelection === "PAPER") {
-        const element = document.createElement("img");
-        element.setAttribute("src", "img/paper.jpg");
-        element.setAttribute("height", height);
-        element.setAttribute("width", width);
-        element.setAttribute("class", "image");
-        computerSelectionImage.appendChild(element);
-    } else {
-        const element = document.createElement("img");
-        element.setAttribute("src", "img/scissors.jpg");
-        element.setAttribute("height", height)
-        element.setAttribute("width", width);
-        element.setAttribute("class", "image");
-        computerSelectionImage.appendChild(element);
+        element2.setAttribute("src", "img/rock.jpg");
     }
-}
+     else if(computerSelection === "PAPER") {
+        element2.setAttribute("src", "img/paper.jpg");
+    } 
+    else {
+        element2.setAttribute("src", "img/scissors.jpg");
+    }
+    element2.setAttribute("height", height);
+    element2.setAttribute("width", width);
+    element2.setAttribute("class", "image");
+    computerSelectionImage.appendChild(element2);
+};
 
 
 function playRound(player, computer) {
@@ -172,11 +156,11 @@ function getResult(resultRound) {
             // check who won the round
             if(playerWon === true) {
                 playerScore += 1;
-                resultRoundText.textContent = `PLAYER WINS THIS ROUND!`;           
+                resultRoundText.textContent = `PLAYER WINS!`;           
             }
             else if(playerWon === false) {
                 computerScore += 1;
-                resultRoundText.textContent = `COMPUTER WINS THIS ROUND!`;
+                resultRoundText.textContent = `COMPUTER WINS!`;
             }
             playerScoreText.textContent = `Player: ${playerScore}`;
             roundCountText.textContent = `Round: ${roundsPlayed}`;
@@ -184,27 +168,26 @@ function getResult(resultRound) {
         }
         // round was a tie
         else {
-            resultRoundText.textContent = `TIE ! PLAY ROUND AGAIN.`;
+            resultRoundText.textContent = `TIE ! PLAY AGAIN.`;
         }  
-}
+};
 
 function gameOver() {
     //console.log("function gameOver()");
     if(playerScore > computerScore) {
-        gameOverText.textContent = "CONGRATULATION! YOU WIN THIS MATCH!";
+        gameOverText.textContent = "CONGRATULATION! YOU WON THIS MATCH!";
     } else {
         gameOverText.textContent = "YOU LOSE! COMPUTER WINS THIS MATCH ";
     }
-}
+};
 
 function game(player) {
     //console.log("function game()");
-   
     // get and show player selection
     playerSelection = player
     // get and show computer selection
     let computerSelection = getComputerChoice();
-    console.log("PLAYER: " + playerSelection + "  ||  " + "Computer: " + computerSelection);
+    //console.log("PLAYER: " + playerSelection + "  ||  " + "Computer: " + computerSelection);
     // create image for player and computer selection
     
     setImage(computerSelection)
@@ -220,10 +203,9 @@ function game(player) {
         btnScissors.disabled = true;
         // activate button
         btnAgain.disabled = false;
-
         gameOver(); // shows winner
     }  
-}
+};
 
 // variables
 let roundsPlayed = 0;
@@ -231,7 +213,6 @@ let playerScore = 0;
 let computerScore = 0;
 // buttons
 const btnRock = document.querySelector("#btnRock");
-console.log(btnRock);
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissors = document.querySelector("#btnScissors");
 // text
@@ -246,8 +227,7 @@ const gameOverText = document.querySelector("#gameOver");
 btnAgain.disabled = true;
 
 function callGame(e) {
-    // e.target.value = player rock/paper/scissors
-    console.log(e.target.value)
+    // e.target.value = player value=rock/paper/scissors
     game(e.target.value);
 };
 
